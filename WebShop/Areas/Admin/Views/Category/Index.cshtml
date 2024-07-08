@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Category>
+ @{
+     ViewBag.PageTitle = "CategoryMangment";
+    ViewBag.CardTitle = "Category List";
+}
+
+<a href="/Admin/Category/Create" class="btn btn-success mb-3">Create</a>
+    
+        <table class="table table-hover" width="100%">
+        <thead class="text-bold">
+            <tr>
+                <td>Name</td>
+                <td>Discription</td>
+                <td>DateOfCreate</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@Html.Raw(item.Description)</td>
+                    <td>@item.CreatedTime</td>
+                    <td>
+                        <a href="/Admin/Category/Edit/@item.Id" class="btn btn-success">Edit</a>
+                        <a href="/Admin/Category/Delete/@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+            }
+        </table>
+   

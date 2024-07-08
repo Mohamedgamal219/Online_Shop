@@ -1,0 +1,45 @@
+﻿@model DTOOrderDetailsSamary
+
+@{
+    ViewBag.PageTitle = "Order Mangment";
+    ViewBag.CardTitle = "Delete Order";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Delete" method="post">
+            <input hidden asp-for="@Model.dTOOrderHeaders.Id" />
+            <div class="d-flex justify-content-between">
+                <label class="mb-2"> Name</label>
+                <input class="mb-2   text-center" type="text" asp-for="@Model.dTOOrderHeaders.Name" />
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <label class="mb-2"> Address</label>
+                <input class="mb-2  text-center" type="text" asp-for="@Model.dTOOrderHeaders.Address " />
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <label class="mb-2"> City</label>
+                <input class="mb-2  text-center" type="text" asp-for="@Model.dTOOrderHeaders.City " />
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <label class="mb-2"> Phone Number</label>
+                <input class="mb-2 text-center" type="text" asp-for="@Model.dTOOrderHeaders.PhoneNumber" />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-danger"> Delete</button>
+                <a asp-action="Index" asp-controller="Order" class="btn btn-warning">BackToList</a>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial">
+}
+

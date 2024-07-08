@@ -1,0 +1,68 @@
+﻿
+@model DTOProduct
+
+@{
+    ViewBag.PageTitle = "ProductMangment";
+    ViewBag.CardTitle = "Edit Product";
+}
+
+<h2>Category</h2>
+<br />
+<h3>Edit</h3>
+
+<div class="row">
+    <div class="col-md-4">
+       <form asp-action="Edit" method="post" enctype="multipart/form-data">
+           <input asp-for="Id" type="hidden" />
+           <input asp-for="Img" type="hidden" />
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Img"></label>
+                <input type="file" name="file" id="imgFile" class="form-control" />
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CategoryId"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="Model.CategoryList">
+                    <option disabled selected> -- Select --</option>
+                </select>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary"> update</button>
+                <a asp-action="Index" asp-controller="Product" class="btn btn-warning">BackToList</a>
+
+            </div>
+            </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="container">
+            <img src="~/@Model.Img" width="300" height="300" />
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial">
+}

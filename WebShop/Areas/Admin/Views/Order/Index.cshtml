@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OrderHeader>
+@{
+    ViewBag.PageTitle = "OrderMangment";
+    ViewBag.CardTitle = "Order List";
+}
+
+<table  id="orderTable" class="table table-hover " width="100%">
+    <thead>
+        <tr>
+            <td> Id</td>
+            <td>Name</td>
+            <td>Phone Number</td>
+            
+            <td>OrderStatus</td>
+            <td>OrderTotal</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Item in Model)
+        {
+            <tr>
+                <td>@Item.Id</td>
+                <td>@Item.Name</td>
+                <td>@Item.PhoneNumber</td>
+                <td>@Item.OrderStatus</td>
+                <td>@Item.TotalPrice</td>
+                <td>
+                    <a href="/Admin/Order/Details/@Item.Id" class="btn btn-success">Details</a>
+                    <a href="/Admin/Order/Delete/@Item.Id" class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#orderTable').DataTable();
+        });
+    </script>
+}

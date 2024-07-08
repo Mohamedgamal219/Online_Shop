@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.PageTitle = "ProductMangment";
+    ViewBag.CardTitle = "Product List";
+}
+
+<a href="/Admin/Product/Create" class="btn btn-success mb-3">Create</a>
+
+<table id="productTable" class="table table-hover" width="100%">
+      <thead>
+         <tr class="text-bold">
+            <td>Name</td>
+            <td>Discription</td>
+            <td>Price</td>
+@*             <td>Image</td>
+ *@            <td>Category</td>
+            <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(var pro in Model)
+        {
+            <tr>
+                <td>@pro.Name</td>
+                <td>@Html.Raw(pro.Description)</td>
+                <td>@pro.Price</td>
+@*                 <td><img src="~/@pro.Img" /></td>
+ *@                <td>@pro.Category.Name</td>
+                <td>
+                    <a href="/Admin/Product/Edit/@pro.Id" class="btn btn-success">Edit</a>
+                    <a href="/Admin/Product/Delete/@pro.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+   </table>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#productTable').DataTable();
+        });
+    </script>
+}

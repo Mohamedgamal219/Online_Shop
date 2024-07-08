@@ -1,0 +1,42 @@
+﻿
+@model DTOCategory
+
+@{
+    ViewBag.PageTitle = "CategoryMangment";
+    ViewBag.CardTitle = "Edit Category";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h2>Category</h2>
+<br />
+<h3>Edit</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <input hidden asp-for="Id" />
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary"> Update</button>
+                <a asp-action="Index" asp-controller="Category" class="btn btn-warning">BackToList</a>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial">
+}

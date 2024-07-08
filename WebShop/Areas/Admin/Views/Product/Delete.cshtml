@@ -1,0 +1,53 @@
+﻿@model Product
+
+@{
+    ViewBag.PageTitle = "CategoryMangment";
+    ViewBag.CardTitle = "Delete Category";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteComfirm" method="post">
+            <input asp-for="Id" hidden />
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" readonly class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" readonly class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Img"></label>
+                <input asp-for="Img" class="form-control" />
+                <span asp-validation-for="Img" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" readonly class="form-control" />
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoryId"></label>
+                <input asp-for="Category.Name" readonly class="form-control" />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-danger"> Delete</button>
+                <a asp-action="Index" asp-controller="Category" class="btn btn-warning">BackToList</a>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial">
+}
+
