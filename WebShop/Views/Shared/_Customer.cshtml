@@ -46,24 +46,27 @@
                         }
                 </ul>
                 <partial name="_LoginPartial" />
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit" asp-action="Index" asp-controller="Cart">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit" asp-action="Index" asp-controller="Cart">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
 
-                        @await Component.InvokeAsync("ShoppingCart")
-                       @*  @if(httpcontextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)!= null)
-                        {
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">
-                               @httpcontextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)
-                            </span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        } *@
-                    </button>
-                </form>
+                            @* @await Component.InvokeAsync("Shopping"); *@
+                            @if (httpcontextAccessor.HttpContext.Session.GetInt32(SD.SessionKey) != null)
+                            {
+                                <span class="badge bg-dark text-white ms-1 rounded-pill">
+                                    @httpcontextAccessor.HttpContext.Session.GetInt32(SD.SessionKey)
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            }
+                        </button>
+                    </form>
+                }
             </div>
         </div>
     </nav>
