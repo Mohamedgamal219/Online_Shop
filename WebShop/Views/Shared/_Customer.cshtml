@@ -33,7 +33,7 @@
                                 <li><a class="dropdown-item" asp-area="Customer" asp-controller="Cart" asp-action="Index">My Order</a></li>
                                     @if (User.IsInRole(SD.AdminRole))
                                     {
-                                    <li><a class="dropdown-item" href="/Admin">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="/Admin/Dashboard/Index">Dashboard</a></li>
                                     <li><a class="dropdown-item" href="/Identity/Account/Manage"> Profile Edit </a></li>
                                     }
                                     else

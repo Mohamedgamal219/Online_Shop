@@ -5,6 +5,7 @@ using myShop.DataAccess.Implntation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using myShop.Uititlity;
+using myShop.DataAccess.DbIntializer;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     .AddDefaultTokenProviders()
     .AddDefaultUI()
     .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddScoped<IDbIntialize, Dbintialize>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -44,7 +47,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapRazorPages();
 app.UseStaticFiles();
-
+seedDb();
 app.UseRouting();
 
 app.UseAuthorization();
@@ -58,3 +61,13 @@ app.MapControllerRoute(
     name: "Admin",
     pattern: "{area=Admin}/{controller=Category}/{action=Index}/{id?}");
 app.Run();
+
+
+void seedDb()
+{
+    using(var scope = app.Services.CreateScope())
+    {
+        var Dbinti = scope.ServiceProvider.GetRequiredService<IDbIntialize>();
+        Dbinti.Intiaize();
+    }
+}

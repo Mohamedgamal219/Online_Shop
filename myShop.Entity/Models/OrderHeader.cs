@@ -23,8 +23,8 @@ namespace myShop.Entity.Models
         public DateTime PaymentDate { get; set; }
 
         //stripe
-        public string? SessionId { get; set; }
-        public string? PaymentIntentId { get; set; }
+        //public string? SessionId { get; set; }
+        //public string? PaymentIntentId { get; set; }
         //UserDate
         public string Name { get; set; }
         public string Address { get; set; }
