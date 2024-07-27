@@ -400,7 +400,7 @@ namespace myShop.Web.Areas.Customer.Controllers
             //    _unitOfWork.Complete();
             //    Response.Headers.Add("Location", session.Url);
             //    return new StatusCodeResult(303);
-            return View("OrderComfirm");
+            return RedirectToAction("OrderComfirm","Cart");
         }
 
         public IActionResult OrderComfirm()
